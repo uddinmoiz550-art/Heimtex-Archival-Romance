@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Archival Romance – Heimtextil by Lucky Textile Mills</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f8f3ee;--card:#fff;--ink:#3b2a2e;--mute:#7a6a6d;--rose:#b9707c;--sage:#8fa595;--line:#e8dcd6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1e1719;--card:#2a2023;--ink:#f3e9e6;--mute:#bba9ab;--rose:#d98e9a;--sage:#9db5a3;--line:#43353a}}
+:root[data-theme="dark"]{--bg:#1e1719;--card:#2a2023;--ink:#f3e9e6;--mute:#bba9ab;--rose:#d98e9a;--sage:#9db5a3;--line:#43353a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:20px 18px 48px}
+header{text-align:center}
+header img{height:76px;border-radius:8px;mix-blend-mode:multiply}
+h1{font:italic 600 clamp(2.3rem,8vw,3.4rem)/1.1 "Cormorant Garamond",Georgia,serif;color:var(--rose);margin:.3em 0 .1em}
+.tag{color:var(--mute);max-width:560px;margin:0 auto}
+.hero{width:100%;border-radius:16px;margin:22px 0;display:block}
+h2{font:600 1.7rem "Cormorant Garamond",Georgia,serif;margin:1.6em 0 .3em}
+.stage{height:330px;perspective:900px;display:flex;align-items:center;justify-content:center;touch-action:none;cursor:grab;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.scene{position:relative;width:220px;height:150px;transform-style:preserve-3d}
+.plane{position:absolute;inset:0;border-radius:10px;background-size:cover;background-position:center;border:2px solid #fff8;box-shadow:0 6px 18px #0004;transition:transform .5s,outline-color .2s;outline:3px solid transparent;cursor:pointer}
+.plane.on{outline-color:var(--rose)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+button{font:500 .9rem Inter,sans-serif;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:9px 14px;border-radius:99px;cursor:pointer}
+button.on{background:var(--rose);color:#fff;border-color:var(--rose)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;gap:16px;grid-template-columns:160px 1fr}
+@media(max-width:560px){.card{grid-template-columns:1fr}}
+.sw{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px}
+.card h3{margin:0;font:600 1.5rem "Cormorant Garamond",Georgia,serif}
+dl{margin:10px 0 0;display:grid;grid-template-columns:110px 1fr;gap:6px 10px;font-size:.92rem}
+dt{color:var(--mute)}dd{margin:0;overflow-wrap:anywhere}
+.note{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--sage);border-radius:12px;padding:14px 16px;margin-top:18px}
+footer{margin-top:32px;color:var(--mute);font-size:.85rem;text-align:center}
+a{color:var(--rose)}
+</style>
+</head>
+<body><div class="wrap">
+<header>
+ <img id="logo" alt="Lucky Textile Mills – Heimtextil" src="images/logo.jpg">
+ <h1 id="name"></h1><p class="tag" id="tag"></p>
+</header>
+<img class="hero" id="hero" alt="Archival Romance bed set">
+
+<h2>Explore the layers</h2>
+<p class="tag" style="margin:0 0 12px">Drag to rotate in 3D. Tap a layer to see its fabric details.</p>
+<div class="stage" id="stage"><div class="scene" id="scene"></div></div>
+<div class="row"><button id="explode" class="on">Exploded view</button><div class="row" id="tabs" style="margin:0"></div></div>
+<div class="card" id="detail"></div>
+
+<div class="note" id="finish"></div>
+<h2>See it in your room</h2>
+<div class="note" id="ar"></div>
+<footer>
+ © Lucky Textile Mills Limited · <a href="LICENSE">MIT licensed open data</a> · <span id="contact"></span>
+</footer>
+</div>
+<!-- Optional scan analytics (free, no cookies): create a site at goatcounter.com, then uncomment and edit:
+<script data-goatcounter="https://YOURCODE.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script> -->
+<script>
+/* ===== EDIT HERE: product data. Add more products by adding objects and linking with #slug ===== */
+const PRODUCTS=[{
+ slug:"archival-romance",name:"Archival Romance",brand:"Heimtextil · Premium Bedding Collection",
+ tagline:"Vintage heritage meets modern comfort: classic English cottage florals, lace and matelassé textures in a whisper-soft palette of dusty pinks and muted naturals.",
+ hero:"images/hero.jpg",model:null,
+ contact:"Product enquiries: add email / WhatsApp here",
+ finish:"<b>Coconut Oil Softener – HS5.</b> Plant-based technology using coconut-oil-based hydrophilic softening. Enhances softness and silky smoothness while supporting moisture-wicking performance.",
+ layers:[
+ {n:1,title:"Digital Printed Duvet Cover",img:"images/l1.jpg",code:"HM-280 (front) / HM-280-R (reverse)",
+  front:"Cotton linen 80% cotton / 20% linen",rev:"Cotton linen 80% cotton / 20% linen",gsm:"180 ±5%",size:"240×220 cm, button closure",proc:"Digital print · Coconut oil softener HS5 finish"},
+ {n:2,title:"Jacquard Matelassé Duvet Cover",img:"images/l2.jpg",code:"HM-284 Strawberry Cream · Pantone 13-2005 TCX",
+  front:"Jacquard matelassé, 65% cotton / 35% Tencel™ (Lenzing)",rev:"T200 percale, 100% combed cotton",gsm:"290",size:"240×220 cm, button closure",proc:"Exhaust reactive medium dyed (front); continuous solid reactive dyed (reverse) · HS5 finish"},
+ {n:3,title:"Embroidered Slub Duvet Cover",img:"images/l3.jpg",code:"SQ-52",
+  front:"2-way slub, 100% cotton (BCI), desize wash + print, embroidered design",rev:"2-way slub, 100% cotton (BCI), desize wash",gsm:"170",size:"240×220 cm, button closure",proc:"Embroidered digital print on desize-washed fabric · HS5 finish"},
+ {n:4,title:"Quilted Throw",img:"images/l4.jpg",code:"Aqua Gray · Pantone 15-5205 TCX",
+  front:"T200 sateen, 100% combed cotton, quilted",rev:"T200 sateen, 100% combed cotton",gsm:"—",size:"50×70 inch",proc:"Dyed · multi-needle embroidery"},
+ {n:5,title:"Fitted Sheet",img:"images/l5.jpg",code:"Misty Rose · Pantone 15-1512 TCX",
+  front:"Plain sateen, 100% combed cotton",rev:"Plain sateen, 100% combed cotton",gsm:"—",size:"72×78 drop 12 (see spec sheet)",proc:"Solid dyed"}
+ ]}];
+/* ================================================================================================ */
+const P=PRODUCTS.find(p=>p.slug===location.hash.slice(1))||PRODUCTS[0];
+const $=id=>document.getElementById(id);
+$('name').textContent=P.name;$('tag').textContent=P.tagline;$('hero').src=P.hero;$('hero').alt=P.name+' bed set';
+$('finish').innerHTML=P.finish;$('contact').textContent=P.contact;
+$('ar').innerHTML=P.model?'3D model available.':'A true augmented-reality “place it on your bed” view is coming soon. Until then, use the 3D layer view above.';
+let sel=0,exploded=true,rx=58,rz=-25,drag=null;
+const scene=$('scene'),order=[...P.layers].reverse(); // bottom → top
+order.forEach(l=>{const d=document.createElement('div');d.className='plane';d.style.backgroundImage=`url(${l.img})`;d.onclick=e=>{e.stopPropagation();pick(l.n-1)};d.dataset.n=l.n;scene.appendChild(d)});
+P.layers.forEach((l,i)=>{const b=document.createElement('button');b.textContent='Layer '+l.n;b.onclick=()=>pick(i);b.dataset.i=i;$('tabs').appendChild(b)});
+function draw(){const gap=exploded?46:7;scene.style.transform=`rotateX(${rx}deg) rotateZ(${rz}deg)`;
+ [...scene.children].forEach((d,i)=>d.style.transform=`translateZ(${i*gap-60}px)`)}
+function pick(i){sel=i;const l=P.layers[i];
+ [...scene.children].forEach(d=>d.classList.toggle('on',+d.dataset.n===l.n));
+ [...$('tabs').children].forEach(b=>b.classList.toggle('on',+b.dataset.i===i));
+ $('detail').innerHTML=`<div><img class="sw" src="${l.img}" alt="${l.title}"></div><div><h3>Layer ${l.n}: ${l.title}</h3><dl><dt>Design code</dt><dd>${l.code}</dd><dt>Front</dt><dd>${l.front}</dd><dt>Reverse</dt><dd>${l.rev}</dd><dt>GSM</dt><dd>${l.gsm}</dd><dt>Size</dt><dd>${l.size}</dd><dt>Process</dt><dd>${l.proc}</dd></dl></div>`}
+$('explode').onclick=e=>{exploded=!exploded;e.target.classList.toggle('on',exploded);e.target.textContent=exploded?'Exploded view':'Stacked view';draw()};
+const st=$('stage');
+st.onpointerdown=e=>{drag=[e.clientX,e.clientY,rx,rz];st.setPointerCapture(e.pointerId)};
+st.onpointermove=e=>{if(!drag)return;rz=drag[3]+(e.clientX-drag[0])*.5;rx=Math.max(10,Math.min(85,drag[2]-(e.clientY-drag[1])*.4));draw()};
+st.onpointerup=()=>drag=null;
+draw();pick(0);
+</script>
+</body></html>
